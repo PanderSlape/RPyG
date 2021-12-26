@@ -1,0 +1,96 @@
+{
+    "player": {
+        "name": "name",
+        "ability": 5,
+        "strength": 5,
+        "location": 1,
+        "exp": 0,
+        "lvl": 0,
+        "hp": 100,
+        "inventory": {
+            "weapons": {},
+            "potions": {},
+            "armor": {},
+            "misc": {},
+            "money": 0
+        },
+        "rep": {
+            "faction_one": {
+                "name": "Hargh",
+                "reputation": 5,
+                "bonus": "strength"
+            },
+            "faction_two": {
+                "name": "Eldar",
+                "reputation": 5,
+                "bonus": "ability"
+            }
+        }
+    },
+    "items-available": {
+        "weapons": {
+            "00001": {
+                "type": 0,
+                "dmg": 1,
+                "name": "Training sword"
+            }
+        },
+        "potions": {},
+        "armor": {},
+        "misc": {}
+    },
+    "map": {
+        "dimension": {
+            "x": 50,
+            "y": 50
+        },
+        "cities": {
+            "village_one": {
+                "location": {
+                    "x": 5,
+                    "y": 5
+                },
+                "inn": {},
+                "faction": 0
+            }
+        },
+        "cult": {},
+        "dungeons": {},
+        "landmarks": {}
+    },
+    "quests": {},
+    "characters": {
+        "innkeeper": {
+            "inventory": {
+                "village_one": {
+                    "weapons": {},
+                    "potions": {},
+                    "armor": {},
+                    "misc": {},
+                    "money": 0
+                }
+            },
+            "dialogue": {
+                "village_one": {
+                    "1": "Bonjour jeune voyageur, que voulez vous ?",
+                    "1a": {
+                        "response": "Boire un coup",
+                        "action": "wait.1"
+                    },
+                    "1b": {
+                        "response": "echanger",
+                        "action": "exchange"
+                    },
+                    "1c": {
+                        "response": "Se reposer 10 pièces",
+                        "action": "sleep"
+                    },
+                    "1d": {
+                        "response": "Poser une question",
+                        "action": "dialogue.2"
+                    }
+                }
+            }
+        }
+    }
+}
