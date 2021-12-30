@@ -1,10 +1,6 @@
 {
     "game":{
-        "difficutly":1,
-        "time":{ 
-            "hours":12,
-            "minutes":30
-        }
+        "difficutly":1
     },
     "player": {
         "name": "name",
@@ -38,7 +34,7 @@
             }
         }
     },
-    "items-available": {
+    "items_available": {
         "weapons": {
             "00001": {
                 "type": 0,

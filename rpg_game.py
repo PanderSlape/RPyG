@@ -1,5 +1,18 @@
-MENU_CHOICE = {"1":"New Game", "2":"Load Save", "3":"Exit"}
-LEVEL_DIFFICULTY = {"1":"Don't hurt me", "2":"Hurt me plenty", "3":"Ultra-violence"}
+import os
+import sys
+
+import json
+
+import utils.game_functions as game_functions
+import utils.player_functions as player_functions
+import utils.items_functions as items_functions
+import utils.map_functions as map_functions
+import utils.quests_functions as quests_functions
+import utils.npc_functions as npc_functions
+
+GAME_DIR = "./Games_you_can_play/"
+LIST_OF_GAMES = [ games for games in os.listdir(GAME_DIR) if os.path.isdir(GAME_DIR+games)==True]
+MENU_CHOICE = {"0":"New Game", "1":"Load Save", "2":"Exit"}
 
 def menu():
     """
@@ -8,108 +21,71 @@ def menu():
 
     print("To start the game you must press enter")
     input()
-    print("Please choose what to do :\n 1. "+MENU_CHOICE["1"]+"\n 2. "+MENU_CHOICE["2"]+"\n 3. "+MENU_CHOICE["3"])
-    menu = input()
+
+    i = 0
+    choices = {}
+    for games in LIST_OF_GAMES:
+        print("[%i] :\t%s" %(i, games))
+        choices[str(i)] = games
+        i+=1
+
+    # Ask user for prefered target
+    userChoice = str(input("\nPlease choose a game : "))
+
+    # Check if the choice is good
+    while userChoice not in choices:
+        print("\nThis is not quite right !")
+        userChoice = str(input("\nPlease choose a game : "))
+
+    game_to_play = GAME_DIR + choices[userChoice] + "/"
+    game_file = choices[userChoice] + ".json"
+    game_saves = "saves/"
+
+    menu = input("\n[0] :\t"+MENU_CHOICE["0"]+"\n[1] :\t"+MENU_CHOICE["1"]+"\n[2] :\t"+MENU_CHOICE["2"]+"\n\nPlease choose what to do :")
     while menu not in MENU_CHOICE:
-        print("Please choose what to do :\n 1. "+MENU_CHOICE["1"]+"\n 2. "+MENU_CHOICE["2"]+"\n 3. "+MENU_CHOICE["3"])
-        menu = input()
+        menu = input("Please choose what to do :")
     
-    return menu
+    return menu, game_to_play, game_file, game_saves
 
-def difficulty_choice():
-    """
-    The difficulty selection screen
-    """
-
-    print("Please select the difficulty level :\n 1. "+LEVEL_DIFFICULTY["1"]+"\n 2. "+LEVEL_DIFFICULTY["2"]+"\n 3. "+LEVEL_DIFFICULTY["3"])
-    difficulty = input()
-    while difficulty not in LEVEL_DIFFICULTY:
-        print("Please select the difficulty level :\n 1. "+LEVEL_DIFFICULTY["1"]+"\n 2. "+LEVEL_DIFFICULTY["2"]+"\n 3. "+LEVEL_DIFFICULTY["3"])
-        difficulty = input()
+def load_game(gamefile):
+    with open(gamefile, 'r') as game:
+        json_game = json.load(game)
     
-    return difficulty
+    game_functions.game = json_game["game"]
+    player_functions.player = json_game["player"]
+    items_functions.items = json_game["items_available"]
+    map_functions.map = json_game["map"]
+    quests_functions.quests = json_game["quests"]
+    npc_functions.characters = json_game["characters"]
 
-def player_init():
-    """
-    Create the character
-    """
+def load_save(saves_dir):
+    saves_available = os.listdir(saves_dir)
 
-    point_attributs = 10
-    ok = 0
+    i = 0
+    choices = {}
+    for saves in saves_available:
+        print("[%i] :\t%s" %(i, saves))
+        choices[str(i)] = saves
+        i+=1
 
-    while ok != 1:
-        print("Please set your characters strength points. " + str(point_attributs) + " points left. You'll need to set Magical points")
-        strength = int(input())
-        if strength > 10:
-            print("Nope, thats overkill")
-        elif strength < 0:
-            print("Nope, thats way too low")
-        else:
-            ok = 1
-    point_attributs = point_attributs - strength
+    # Ask user for prefered target
+    userChoice = str(input("\nPlease choose a save file : "))
 
-    ok = 0
-    while ok != 1:
-        print("Please set your characters magical points. " + str(point_attributs) + " points left")
-        magical = int(input())
-        if magical > point_attributs:
-            print("Nope, thats overkill")
-        elif magical < 0:
-            print("Nope, thats way too low")
-        else:
-            ok = 1
-    point_attributs = point_attributs - magical
+    # Check if the choice is good
+    while userChoice not in choices:
+        print("\nThis is not quite right !")
+        userChoice = str(input("\nPlease choose a save file : "))
 
-    print("Please name your characters")
-    name = input()
-    if name == "Hitler":
-        name = "Nope"
-    elif name == "Stalin":
-        name = "Neither"
-    elif name == "Raven":
-        name = "Nevermore"
-    elif name == "Caleb":
-        name = "Free the fucking source code"
-    elif name == "Duke":
-        name = "Nobody steals our chicks and lives"
-    elif name == "McClane":
-        name = "Yippee-ki-yay"
-    elif name == "Rocky":
-        name = "Adriaaaaaaan !!!!!!"
-    elif name == "":
-        name = "Null"
-    print("Your character name is "+name+", your magical stats are "+str(magical)+" and you strength "+str(strength)+".")
-    player = {"name":name,
-              "magical":magical,
-              "strength":strength,
-              "location":1,
-              "exp":0,
-              "lvl":0,
-              "hp":100,
-              "inventory":{
-                  "weapons":{
-                      "equipped":0,
-                      "unequipped":[]},
-                  "healing":{
-                      },
-                  "armor":{
-                      "equipped_head":0,
-                      "equiped_torso":0,
-                      "equiped_legs":0,
-                      "equipped_feet":0
-                      }
-                  },
-              "quest_completed":[]}
-
-    return player
+    load_game(saves_dir+choices[userChoice])
 
 if __name__ == '__main__':
     choice = menu()
-    if choice == "1":
-        difficulty = difficulty_choice()
-        player = player_init()
+    if choice[0] == "0":
+        load_game(choice[1]+choice[2])
+        game_functions.game["difficutly"] = game_functions.difficulty_choice()
+        player_functions.player = player_functions.player_init(player_functions.player)
         ok = 0
-        while ok =! 1:
+        while ok != 1:
             print("Confirm? Yes/No")
             confirm = input()
             if confirm == "Yes":
@@ -118,15 +94,12 @@ if __name__ == '__main__':
                 player = player_init()
             else:
                 print("Incorrect input")
-        save = {"difficulty":difficulty, "player":player}
-    elif choice == "2":
-        print("not done already sorry")
-        input()
-        exit()
-    elif choice == "3":
+    elif choice[0] == "1":
+        load_save(choice[1]+choice[3])
+    elif choice[0] == "2":
         print("exiting")
         input()
         exit()
     game = True
-    while game is True:
-        print("the game starts")
+    #while game is True:
+    #    print("the game starts")
