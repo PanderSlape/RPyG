@@ -10,11 +10,10 @@
         "name": "name",
         "ability": 5,
         "strength": 5,
-        "location": 1,
         "exp": 0,
         "lvl": 0,
         "hp": 100,
-        "position":{
+        "location":{
             "x": 10,
             "y": 10,
             "detail": "Lindenvale.inn.lobby" 
@@ -135,13 +134,15 @@
                     "x": 10,
                     "y": 10
                 },
-                "inn": {
-                    "lobby": {
-                        "characters_inside": ["innkeeper", "drunk bum"],
-                        "description_text": "Describe the scene here"
-                    },
-                    "room_one": {
-                        "bed": 1
+                "buildings" :{
+                    "inn": {
+                        "lobby": {
+                            "characters_inside": ["innkeeper", "drunk bum"],
+                            "description_text": "Describe the scene here"
+                        },
+                        "room_one": {
+                            "bed": 1
+                        }
                     }
                 },
                 "faction": 0

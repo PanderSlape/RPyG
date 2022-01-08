@@ -10,11 +10,10 @@
         "name": "name",
         "ability": 5,
         "strength": 5,
-        "location": 1,
         "exp": 0,
         "lvl": 0,
         "hp": 100,
-        "position":{
+        "location":{
             "x": 10,
             "y": 10,
             "detail": "village_one.inn.lobby"

@@ -19,6 +19,7 @@ def play_exposition(game):
 
 def action_menu(game):
     options = []
+    print(game["player"]["location"]["details"])
     if len(game["player"]["location"]["details"]) == 0:
         for cities in game["map"]["cities"]:
             if player["player"]["location"]["x"] == cities["location"]["x"] and player["player"]["location"]["y"] == cities["location"]["y"]:
@@ -29,5 +30,13 @@ def action_menu(game):
         for cults in game["map"]["dungeon"]:
             if player["player"]["location"]["x"] == cities["dungeon"]["x"] and player["player"]["location"]["y"] == cities["dungeon"]["y"]:
                 option.append("There is a dungeon here, enter !")
+        option.append("Travel towards north")
+        option.append("Travel towards east")
+        option.append("Travel towards west")
+        option.append("Travel towards south")
     
     else:
+        place = split(game["player"]["location"]["details"], ".")
+        if len(place) == 1:
+            for buildings in game["map"]["cities"][place[0]]:
+                print(buildings)
