@@ -48,15 +48,11 @@ def menu():
     return menu, game_to_play, game_file, game_saves
 
 def load_game(gamefile):
+    print(gamefile)
     with open(gamefile, 'r') as game:
         json_game = json.load(game)
     
-    game_functions.game = json_game["game"]
-    player_functions.player = json_game["player"]
-    items_functions.items = json_game["items_available"]
-    map_functions.map = json_game["map"]
-    quests_functions.quests = json_game["quests"]
-    npc_functions.characters = json_game["characters"]
+    return json_game
 
 def load_save(saves_dir):
     saves_available = os.listdir(saves_dir)
@@ -81,9 +77,9 @@ def load_save(saves_dir):
 if __name__ == '__main__':
     choice = menu()
     if choice[0] == "0":
-        load_game(choice[1]+choice[2])
-        game_functions.game["difficutly"] = game_functions.difficulty_choice()
-        player_functions.player = player_functions.player_init(player_functions.player)
+        game = load_game(choice[1]+choice[2])
+        game["game"]["difficutly"] = game_functions.difficulty_choice()
+        game["player"] = player_functions.player_init(game["player"])
         ok = 0
         while ok != 1:
             print("Confirm? Yes/No")
@@ -100,6 +96,9 @@ if __name__ == '__main__':
         print("exiting")
         input()
         exit()
-    game = True
-    #while game is True:
-    #    print("the game starts")
+    
+    os.system("clear")
+    if game["exposition_text"]["was_played"] == "False":
+        game_functions.play_exposition(game)
+
+    game_functions.action_menu(game)

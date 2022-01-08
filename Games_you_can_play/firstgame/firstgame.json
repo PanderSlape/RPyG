@@ -1,6 +1,10 @@
 {
     "game":{
-        "difficutly":1
+        "difficutly":1,
+        "time":{ 
+            "hours":"06",
+            "minutes":"00"
+        }
     },
     "player": {
         "name": "name",
@@ -12,14 +16,34 @@
         "hp": 100,
         "position":{
             "x": 10,
-            "y": 10
+            "y": 10,
+            "detail": "Lindenvale.inn.lobby" 
         },
         "inventory": {
-            "weapons": {},
-            "potions": {},
-            "armor": {},
-            "misc": {},
-            "money": 0
+            "weapons": {
+                "equipped": "00000",
+                "owned": {
+                    "00000": 1
+                }
+            },
+            "potions": {
+                "owned": {
+                    "00000": 10,
+                    "00001": 10
+                }
+            },
+            "armor": {
+                "equipped": "00000",
+                "owned": {
+                    "00000": 1
+                }
+            },
+            "misc": {
+                "owned": {
+                    "00000": 10
+                }
+            },
+            "money": 100
         },
         "rep": {
             "faction_one": {
@@ -36,15 +60,69 @@
     },
     "items_available": {
         "weapons": {
-            "00001": {
-                "type": 0,
-                "dmg": 1,
-                "name": "Training sword"
+            "000000" :{
+                "type": "sword",
+                "effect": "dmg.10",
+                "name": "Average sword",
+                "description": "A very blunt edge, might not be very efficient but you can hit with it ? Right ?",
+                "luck": 0
             }
         },
-        "potions": {},
-        "armor": {},
-        "misc": {}
+        "potions": {
+            "000000" :{
+                "type": "healing.ingredient",
+                "effect": "heal.10",
+                "name": "Honey",
+                "description": "A very basic healing product, can be used to make Mead with water and yeast.",
+                "luck": 0
+            },
+            "000001" :{
+                "type": "healing.ingredient",
+                "effect": "heal.1",
+                "name": "water",
+                "description": "You can drink it but you might want to mix it with something to be more effective.",
+                "luck": 0
+            },
+            "000010" :{
+                "type": "healing.berserk",
+                "effect": "heal.50.dice.berserk",
+                "name": "Mead",
+                "description": "A gift from the gods that will help you fight... Maybe, at least it will heal you",
+                "luck": 0
+            },
+            "000011" :{
+                "type": "healing",
+                "effect": "heal.20",
+                "name": "Lukewarm Beer",
+                "description": "You'd wish it was fresh",
+                "luck": 0
+            },
+            "000100" :{
+                "type": "healing",
+                "effect": "heal.30",
+                "name": "Fresh Beer",
+                "description": "Enjoy it now. It will not stay fresh for long.",
+                "luck": 0
+            }
+        },
+        "armor": {
+            "000000" :{
+                "type": "clothing",
+                "effect": "none",
+                "name": "Simple Clothes",
+                "description": "Simple clothes, won't help you against any foe. At least you are not buttfuck naked.",
+                "luck": 0
+            }
+        },
+        "misc": {
+            "000000" :{
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Yeast",
+                "description": "Can be used to make bread and fermented drinks",
+                "luck": 0
+            }
+        }
     },
     "map": {
         "dimension": {
@@ -52,52 +130,81 @@
             "y": 50
         },
         "cities": {
-            "village_one": {
+            "Lindenvale": {
                 "location": {
-                    "x": 5,
-                    "y": 5
+                    "x": 10,
+                    "y": 10
                 },
-                "inn": {},
+                "inn": {
+                    "lobby": {
+                        "characters_inside": ["innkeeper", "drunk bum"],
+                        "description_text": "Describe the scene here"
+                    },
+                    "room_one": {
+                        "bed": 1
+                    }
+                },
                 "faction": 0
             }
         },
         "cult": {},
-        "dungeons": {},
+        "dungeons": {
+            "dungeon_one":{
+                "location": {
+                    "x": 6,
+                    "y": 6
+                },
+                "level_one": {
+                    "hostiles": ["bear"]
+                },
+                "level_two": {
+                    "chest": ["potion.000010", "money.50"]
+                }
+            }
+        },
         "landmarks": {}
     },
     "quests": {},
     "characters": {
         "innkeeper": {
             "inventory": {
-                "village_one": {
+                "Lindenvale": {
                     "weapons": {},
                     "potions": {},
                     "armor": {},
                     "misc": {},
-                    "money": 0
+                    "money": 1000
                 }
             },
             "dialogue": {
-                "village_one": {
-                    "1": "Bonjour jeune voyageur, que voulez vous ?",
+                "Lindenvale": {
+                    "1": "Hello, What do you want ?",
                     "1a": {
-                        "response": "Boire un coup",
-                        "action": "wait.1"
+                        "response": "wait 1 hour",
+                        "action": "wait.hour.1"
                     },
                     "1b": {
-                        "response": "echanger",
+                        "response": "exchange",
                         "action": "exchange"
                     },
                     "1c": {
-                        "response": "Se reposer 10 pièces",
+                        "response": "sleep",
                         "action": "sleep"
                     },
                     "1d": {
-                        "response": "Poser une question",
+                        "response": "ask",
                         "action": "dialogue.2"
                     }
                 }
             }
         }
+    },
+    "exposition_text": {
+        "was_played": "False",
+        "exposition": "You wake up, You feel the wooden counter under your cheek.\nYou barely remember the night.\nThe innkeeper says \"Finally awake ? Weren't you supposed to go on a Quest young man ? Something about killing the bear and looting the dungeon ?\".\nYou lift yourself up and say \"Absolutely, I need to go.\""
+    },
+    "end_text": {
+        "was_played": "False",
+        "exposition": "You have slain the biggest bear in the whole kingdom, and gotten a price worth every bite he took out of your flesh !"
     }
 }

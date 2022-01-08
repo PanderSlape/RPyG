@@ -12,3 +12,22 @@ def difficulty_choice():
         difficulty = input()
     
     return difficulty
+
+def play_exposition(game):
+    print(game["exposition_text"]["exposition"])
+    game["exposition_text"]["was_played"] = "True"
+
+def action_menu(game):
+    options = []
+    if len(game["player"]["location"]["details"]) == 0:
+        for cities in game["map"]["cities"]:
+            if player["player"]["location"]["x"] == cities["location"]["x"] and player["player"]["location"]["y"] == cities["location"]["y"]:
+                option.append("There is a city here, enter !")
+        for cults in game["map"]["cult"]:
+            if player["player"]["location"]["x"] == cities["cult"]["x"] and player["player"]["location"]["y"] == cities["cult"]["y"]:
+                option.append("There is a shrine here, enter !")
+        for cults in game["map"]["dungeon"]:
+            if player["player"]["location"]["x"] == cities["dungeon"]["x"] and player["player"]["location"]["y"] == cities["dungeon"]["y"]:
+                option.append("There is a dungeon here, enter !")
+    
+    else:
