@@ -48,7 +48,6 @@ def menu():
     return menu, game_to_play, game_file, game_saves
 
 def load_game(gamefile):
-    print(gamefile)
     with open(gamefile, 'r') as game:
         json_game = json.load(game)
     
@@ -72,7 +71,17 @@ def load_save(saves_dir):
         print("\nThis is not quite right !")
         userChoice = str(input("\nPlease choose a save file : "))
 
-    load_game(saves_dir+choices[userChoice])
+    game = load_game(saves_dir+choices[userChoice])
+
+    return game
+
+def save_game(saves_dir, game_name, game):
+
+    name_save = game_name+game["player"]["name"]+".json"
+
+    with open(saves_dir+name_save, 'w') as f:
+        json.dump(game, f)
+
 
 if __name__ == '__main__':
     choice = menu()
@@ -87,18 +96,37 @@ if __name__ == '__main__':
             if confirm == "Yes":
                 ok = 1
             elif confirm == "No":
-                player = player_init()
+                player = player_init() 
             else:
                 print("Incorrect input")
     elif choice[0] == "1":
-        load_save(choice[1]+choice[3])
+        game = load_save(choice[1]+choice[3])
     elif choice[0] == "2":
         print("exiting")
         input()
         exit()
-    
-    os.system("clear")
-    if game["exposition_text"]["was_played"] == "False":
-        game_functions.play_exposition(game)
+    try:
+        os.system("clear")
+        if game["exposition_text"]["was_played"] != "True":
+            game_functions.play_exposition(game)
 
-    game_functions.action_menu(game)
+        play == True
+
+        while play == True:
+            action = game_functions.action_menu(game)
+            
+            if action.split("_")[0] == "speak":
+                npc_functions.speak_to(game, action.split("_")[1])
+            elif action.split("_")[0] == "enter":
+                map_functions.enter(game, action.split("_")[1])
+            elif action.split("_")[0] == "go":
+                map_functions.go(game, action.split("_")[1])
+            elif action.split("_")[0] == "leave":
+                map_functions.leave(game)
+            elif action.split("_")[0] == "pray":
+                map_functions.pray(game)
+            elif action.split("_")[0] == "craft":
+                item_functions.craft(game)
+
+    except:
+        save_game(choice[1], choice[3], game)

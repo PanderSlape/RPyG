@@ -1,2 +1,2 @@
-def lul():
+def craft(game):
     print("hippyty hoppity")
