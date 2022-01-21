@@ -16,18 +16,23 @@ def play_exposition(game):
     print(game["exposition_text"]["exposition"])
     game["exposition_text"]["was_played"] = "True"
 
+def spend_time(game, minutes):
+    game["game"]["time"]["minute"]+=(minutes%60)
+    game["game"]["time"]["hours"]+=(minutes//60)
+    return game
+
 def action_menu(game):
     options = []
     if len(game["player"]["location"]["detail"]) == 0:
-        for cities in game["map"]["cities"]:
-            if player["player"]["location"]["x"] == cities["location"]["x"] and player["player"]["location"]["y"] == cities["location"]["y"]:
-                options.append("There is a city here, enter.enter_city")
+        for city in game["map"]["cities"]:
+            if game["player"]["location"]["x"] == game["map"]["cities"][city]["location"]["x"] and game["player"]["location"]["y"] == game["map"]["cities"][city]["location"]["y"]:
+                options.append("There is a city here, enter.enter_"+city)
         for cults in game["map"]["cult"]:
-            if player["player"]["location"]["x"] == cities["cult"]["x"] and player["player"]["location"]["y"] == cities["cult"]["y"]:
-                options.append("There is a shrine here, pray.pray")
-        for cults in game["map"]["dungeon"]:
-            if player["player"]["location"]["x"] == cities["dungeon"]["x"] and player["player"]["location"]["y"] == cities["dungeon"]["y"]:
-                options.append("There is a dungeon here, dungeon.enter_dungeon")
+            if game["player"]["location"]["x"] == game["map"]["cult"][cults]["location"]["x"] and game["player"]["location"]["y"] == game["map"]["cult"][cults]["location"]["y"]:
+                options.append("There is a shrine here, pray.pray_"+cults)
+        for dungeon in game["map"]["dungeons"]:
+            if game["player"]["location"]["x"] == game["map"]["dungeons"][dungeon]["location"]["x"] and game["player"]["location"]["y"] == game["map"]["dungeons"][dungeon]["location"]["y"]:
+                options.append("There is a dungeon here, dungeon.dungeon_enter")
         options.append("Travel towards north .go_north")
         options.append("Travel towards east .go_east")
         options.append("Travel towards west .go_west")
@@ -39,12 +44,13 @@ def action_menu(game):
         if place[0] in game["map"]["cities"]:
             if len(place) == 1:
                 for buildings in game["map"]["cities"][place[0]]["buildings"]:
-                    options.append("You can enter the "+buildings+" .enter_"+buildings+"_lobby")
+                    options.append("You can enter the "+buildings+" .enter_"+buildings+"-lobby")
+                options.append("You can leave the city .leave")
             elif place[2] == "lobby":
                 print("\n"+game["map"]["cities"][place[0]]["buildings"][place[1]]["lobby"]["description_text"]+"\n")
                 for characters in game["map"]["cities"][place[0]]["buildings"][place[1]]["lobby"]["characters_inside"]:
                     options.append("You can speak to "+characters+" .speak_"+characters)
-            options.append("You can leave the building .leave")
+                options.append("You can leave the building .leave")
 
 
     choices = {}

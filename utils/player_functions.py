@@ -39,3 +39,26 @@ def player_init(player):
         player["name"] = "Nevermore"
 
     return player
+
+def gain_exp(game, exp):
+    if game["player"]["exp"] + exp >= 100:
+        game["player"]["exp"]+=exp
+        game["player"]["exp"]-=100
+        game = gain_lvl(game)
+    else:
+        game["player"]["exp"]+=exp
+
+    return game
+
+def gain_hp(game, hp):
+    if game["player"]["hp"] + hp >= 100:
+        game["player"]["hp"]=100
+    else:
+        game["player"]["hp"]+=hp
+
+    return game
+
+def gain_lvl(game):
+    game["player"]["lvl"]+=1
+
+    return game

@@ -148,7 +148,15 @@
                 "faction": 0
             }
         },
-        "cult": {},
+        "cult": {
+            "Lindenvale's shrine": {
+                "location": {
+                    "x": 11,
+                    "y": 11
+                },
+                "uses": 5
+            }
+        },
         "dungeons": {
             "dungeon_one":{
                 "location": {

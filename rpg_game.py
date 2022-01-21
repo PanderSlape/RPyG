@@ -110,23 +110,21 @@ if __name__ == '__main__':
         if game["exposition_text"]["was_played"] != "True":
             game_functions.play_exposition(game)
 
-        play == True
-
-        while play == True:
+        while True:
             action = game_functions.action_menu(game)
             
             if action.split("_")[0] == "speak":
-                npc_functions.speak_to(game, action.split("_")[1])
+                game = npc_functions.speak_to(game, action.split("_")[1])
             elif action.split("_")[0] == "enter":
-                map_functions.enter(game, action.split("_")[1])
+                game = map_functions.enter(game, action.split("_")[1])
             elif action.split("_")[0] == "go":
-                map_functions.go(game, action.split("_")[1])
+                game = map_functions.go(game, action.split("_")[1])
             elif action.split("_")[0] == "leave":
-                map_functions.leave(game)
+                game = map_functions.leave(game)
             elif action.split("_")[0] == "pray":
-                map_functions.pray(game)
+                game = map_functions.pray(game, action.split("_")[1])
             elif action.split("_")[0] == "craft":
-                item_functions.craft(game)
+                game = item_functions.craft(game)
 
     except:
         save_game(choice[1], choice[3], game)
