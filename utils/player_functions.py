@@ -41,24 +41,49 @@ def player_init(player):
     return player
 
 def gain_exp(game, exp):
-    if game["player"]["exp"] + exp >= 100:
-        game["player"]["exp"]+=exp
-        game["player"]["exp"]-=100
-        game = gain_lvl(game)
-    else:
-        game["player"]["exp"]+=exp
+    try:
+        print("Gained : "+str(exp)+" exp")
+        if game["player"]["exp"] + exp >= 100:
+            game["player"]["exp"]+=exp
+            game["player"]["exp"]-=100
+            game = gain_lvl(game)
+        else:
+            game["player"]["exp"]+=exp
+    except Exception as e:
+        print(type(exp))
+        print(e)
 
     return game
 
 def gain_hp(game, hp):
-    if game["player"]["hp"] + hp >= 100:
-        game["player"]["hp"]=100
-    else:
-        game["player"]["hp"]+=hp
+    try:
+        print("Gained : "+str(hp)+" hp")
+        if game["player"]["hp"] + hp >= 100:
+            game["player"]["hp"]=100
+        else:
+            game["player"]["hp"]+=hp
+    except Exception as e:
+        print(type(hp))
+        print(e)
+
+    return game
+
+def lose_hp(game, hp):
+    try:
+        print("Lost : "+str(hp)+" hp")
+        if game["player"]["hp"] - hp <= 0:
+            game["player"]["hp"] = 0
+            game = game_functions.game_over(game)
+        else:
+            game["player"]["hp"]-=hp
+    except Exception as e:
+        print(type(hp))
+        print(e)
 
     return game
 
 def gain_lvl(game):
+    print("Gained : 1 level")
     game["player"]["lvl"]+=1
 
     return game

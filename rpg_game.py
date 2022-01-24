@@ -77,7 +77,7 @@ def load_save(saves_dir):
 
 def save_game(saves_dir, game_name, game):
 
-    name_save = game_name+game["player"]["name"]+".json"
+    name_save = game_name+game["player"]["name"]+"_"+game["game"]["time"]["hours"]+"-"+game["game"]["time"]["minutes"]+".json"
 
     with open(saves_dir+name_save, 'w') as f:
         json.dump(game, f)
@@ -124,7 +124,9 @@ if __name__ == '__main__':
             elif action.split("_")[0] == "pray":
                 game = map_functions.pray(game, action.split("_")[1])
             elif action.split("_")[0] == "craft":
-                game = item_functions.craft(game)
+                game = items_functions.craft_menu(game)
+            elif action.split("_")[0] == "inventory":
+                game = items_functions.check_inventory(game)
 
     except:
         save_game(choice[1], choice[3], game)

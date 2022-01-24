@@ -22,13 +22,17 @@ def leave(game):
     return game
 
 def pray(game, cult):
-    if game["map"]["cult"][cult]["uses"] != 0:
-        game["map"]["cult"][cult]["uses"]-=1
-        game = player_functions.gain_exp(game, 15)
-        game = player_functions.gain_hp(game, 15)
-        game = game_functions.spend_time(game, 30)
-    else:
-        print("The shrine has lost it's power.")
+    try:
+        if game["map"]["cult"][cult]["uses"] != 0:
+            game["map"]["cult"][cult]["uses"]-=1
+            game = player_functions.gain_exp(game, 15)
+            game = player_functions.gain_hp(game, 15)
+            game = game_functions.spend_time(game, 30)
+            print("You suddenly feel better.")
+        else:
+            print("The shrine has lost it's power.")
+    except Exception as e:
+        print(e)
 
     return game
 

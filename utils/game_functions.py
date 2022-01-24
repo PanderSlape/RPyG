@@ -17,13 +17,21 @@ def play_exposition(game):
     game["exposition_text"]["was_played"] = "True"
 
 def spend_time(game, minutes):
-    game["game"]["time"]["minute"]+=(minutes%60)
-    game["game"]["time"]["hours"]+=(minutes//60)
+    if int(game["game"]["time"]["minutes"])+(minutes%60) >= 60:
+        minutes += 60
+    game["game"]["time"]["minutes"] = str((int(game["game"]["time"]["minutes"])+(minutes%60)) % 60)
+    game["game"]["time"]["hours"] = str((int(game["game"]["time"]["hours"])+(minutes//60)) % 24)
     return game
 
 def action_menu(game):
     options = []
-    if len(game["player"]["location"]["detail"]) == 0:
+    if game["player"]["location"]["detail"] == "":
+        options.append("Travel towards north .go_north")
+        options.append("Travel towards east .go_east")
+        options.append("Travel towards west .go_west")
+        options.append("Travel towards south .go_south")
+        options.append("Use inventory .inventory")
+        options.append("Craft something .craft")
         for city in game["map"]["cities"]:
             if game["player"]["location"]["x"] == game["map"]["cities"][city]["location"]["x"] and game["player"]["location"]["y"] == game["map"]["cities"][city]["location"]["y"]:
                 options.append("There is a city here, enter.enter_"+city)
@@ -33,11 +41,6 @@ def action_menu(game):
         for dungeon in game["map"]["dungeons"]:
             if game["player"]["location"]["x"] == game["map"]["dungeons"][dungeon]["location"]["x"] and game["player"]["location"]["y"] == game["map"]["dungeons"][dungeon]["location"]["y"]:
                 options.append("There is a dungeon here, dungeon.dungeon_enter")
-        options.append("Travel towards north .go_north")
-        options.append("Travel towards east .go_east")
-        options.append("Travel towards west .go_west")
-        options.append("Travel towards south .go_south")
-        options.append("Craft something .craft")
     
     else:
         place = game["player"]["location"]["detail"].split(".")
@@ -51,17 +54,19 @@ def action_menu(game):
                 for characters in game["map"]["cities"][place[0]]["buildings"][place[1]]["lobby"]["characters_inside"]:
                     options.append("You can speak to "+characters+" .speak_"+characters)
                 options.append("You can leave the building .leave")
-
+        
+        options.append("Use inventory .inventory")
+        options.append("Craft something .craft")
 
     choices = {}
 
     for i in range(len(options)):
         print("["+str(i)+"] :\t"+options[i].split(".")[0])
-        choices[i] = options[i].split(".")[1]
-    
-    userChoice = int(input("\nWhat do you want to do ? "))
+        choices[str(i)] = options[i].split(".")[1]
+
+    userChoice = str(input("\nWhat do you want to do ? "))
 
     while userChoice not in choices:
-        userChoice = int(input("\nWhat do you want to do ? "))
+        userChoice = str(input("\nWhat do you want to do ? "))
 
     return choices[userChoice]

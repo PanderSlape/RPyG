@@ -20,26 +20,26 @@
         },
         "inventory": {
             "weapons": {
-                "equipped": "00000",
+                "equipped": "000000",
                 "owned": {
-                    "00000": 1
+                    "000000": 1
                 }
             },
             "potions": {
                 "owned": {
-                    "00000": 10,
-                    "00001": 10
+                    "000000": 10,
+                    "000001": 10
                 }
             },
             "armor": {
-                "equipped": "00000",
+                "equipped": "000000",
                 "owned": {
-                    "00000": 1
+                    "000000": 1
                 }
             },
             "misc": {
                 "owned": {
-                    "00000": 10
+                    "000000": 10
                 }
             },
             "money": 100
@@ -120,8 +120,19 @@
                 "name": "Yeast",
                 "description": "Can be used to make bread and fermented drinks",
                 "luck": 0
+            },
+            "000001" :{
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Wheat",
+                "description": "Can be used to make bread and fermented drinks",
+                "luck": 0
             }
         }
+    },
+    "recipes": {
+        "potions.000010": "potions.000001.potions.000000.misc.000000",
+        "potions.000011": "misc.000001.potions.000000.misc.000000"
     },
     "map": {
         "dimension": {
