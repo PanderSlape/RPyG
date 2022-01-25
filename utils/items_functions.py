@@ -3,40 +3,40 @@ import utils.player_functions as player_functions
 
 def craft_menu(game):
     try:
-        recipes = game["recipes"]
-        options = []
-        choices = {}
+        while True:
+            recipes = game["recipes"]
+            options = []
+            choices = {}
 
-        for recipe in recipes:
-            result = game["items_available"][recipe.split(".")[0]][recipe.split(".")[1]]["name"]
-            ingredients = game["recipes"][recipe].split(".")
-            ok_for_crafting = True
-            list_ingredient = []
-            for i in range(0, len(ingredients), 2):
-                if ingredients[i+1] in game["player"]["inventory"][ingredients[i]]["owned"]:
-                    list_ingredient.append(game["items_available"][ingredients[i]][ingredients[i+1]]["name"])
-                else:
-                    ok_for_crafting = False
-            if ok_for_crafting:
-                options.append("You can make "+result+"-make_"+recipe+"-\n\tIt will cost you 1x"+list_ingredient[0]+", 1x"+list_ingredient[1]+", 1x"+list_ingredient[2])
-        options.append("Exit crafting -exit")
+            for recipe in recipes:
+                result = game["items_available"][recipe.split(".")[0]][recipe.split(".")[1]]["name"]
+                ingredients = game["recipes"][recipe].split(".")
+                ok_for_crafting = True
+                list_ingredient = []
+                for i in range(0, len(ingredients), 2):
+                    if ingredients[i+1] in game["player"]["inventory"][ingredients[i]]["owned"]:
+                        list_ingredient.append(game["items_available"][ingredients[i]][ingredients[i+1]]["name"])
+                    else:
+                        ok_for_crafting = False
+                if ok_for_crafting:
+                    options.append("You can make "+result+"-make_"+recipe+"-\n\tIt will cost you 1x"+list_ingredient[0]+", 1x"+list_ingredient[1]+", 1x"+list_ingredient[2])
+            options.append("Exit crafting -exit")
 
-        for i in range(len(options)):
-            print("["+str(i)+"] :\t"+options[i].split("-")[0])
-            choices[str(i)] = options[i].split("-")[1]
+            for i in range(len(options)):
+                print("["+str(i)+"] :\t"+options[i].split("-")[0])
+                choices[str(i)] = options[i].split("-")[1]
 
-        userChoice = str(input("\nWhat do you want to do ? "))
-
-        while userChoice not in choices:
             userChoice = str(input("\nWhat do you want to do ? "))
 
-        action = choices[userChoice]
+            while userChoice not in choices:
+                userChoice = str(input("\nWhat do you want to do ? "))
 
-        if action == "exit":
-            return game
-        else:
-            game = craft_item(game, action.split("_")[1])
-            return game
+            action = choices[userChoice]
+
+            if action == "exit":
+                return game
+            else:
+                game = craft_item(game, action.split("_")[1])
     except Exception as e:
         print(e)
 

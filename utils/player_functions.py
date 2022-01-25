@@ -1,3 +1,5 @@
+import utils.game_functions as game_functions
+
 def player_init(player):
     """
     Create the character
@@ -86,4 +88,23 @@ def gain_lvl(game):
     print("Gained : 1 level")
     game["player"]["lvl"]+=1
 
+    return game
+
+def sleep(game, minutes):
+    game = gain_hp(game, 1000000)
+    game = gain_exp(game, 15)
+    game = game_functions.spend_time(game, minutes)
+    return game
+
+def check_money(game, coins):
+    if game["player"]["inventory"]["money"] >= coins:
+        return True
+    else:
+        print("You cannot afford it")
+        return False
+
+def pay(game, character, coins):
+    game["player"]["inventory"]["money"] -= coins
+    city = game["player"]["location"]["detail"].split(".")[0]
+    game["characters"][character]["inventory"][city]["money"] += coins
     return game

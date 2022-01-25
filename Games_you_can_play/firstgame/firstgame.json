@@ -197,23 +197,68 @@
                 }
             },
             "dialogue": {
-                "Lindenvale": {
-                    "1": "Hello, What do you want ?",
-                    "1a": {
-                        "response": "wait 1 hour",
-                        "action": "wait.hour.1"
+                "general": {
+                    "0": {
+                        "speak" : "Hello, What do you want ?",
+                        "responses":{
+                            "0": {
+                                "response": "I just want to sit here a bit !",
+                                "action": "wait.60"
+                            },
+                            "1": {
+                                "response": "May we trade ?",
+                                "action": "dialogue.exchange"
+                            },
+                            "2": {
+                                "response": "May i sleep ?",
+                                "action": "dialogue.sleep"
+                            },
+                            "3": {
+                                "response": "Nothing.",
+                                "action": "exit"
+                            }
+                        }
                     },
-                    "1b": {
-                        "response": "exchange",
-                        "action": "exchange"
+                    "sleep": {
+                        "speak" : "Of course. It's gonna cost you 15 coins",
+                        "responses": {
+                            "0": {
+                                "response": "Ok, i'll sleep",
+                                "action": "pay.15.sleep.360"
+                            },
+                            "1": {
+                                "response": "Maybe later",
+                                "action": "exit"
+                            }
+                        }
                     },
-                    "1c": {
-                        "response": "sleep",
-                        "action": "sleep"
-                    },
-                    "1d": {
-                        "response": "ask",
-                        "action": "dialogue.2"
+                    "exchange": {
+                        "speak" : "Of course, I can buy from you and sell to you",
+                        "responses": {
+                            "0": {
+                                "response": "Ok, let's trade",
+                                "action": "trade"
+                            },
+                            "1": {
+                                "response": "Maybe later",
+                                "action": "exit"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "drunk bum": {
+            "dialogue": {
+                "general": {
+                    "0": {
+                        "speak" : "*Buuurp* You don't frighten us, English pig-dogs! Go and boil your bottom, sons of a silly person. I blow my nose at you, so-called Arthur King, you and all your silly English k-nnnnniggets. Thpppppt! Thppt! Thppt! .",
+                        "responses": {
+                            "0": {
+                                "response": "What a strange person.",
+                                "action": "exit"
+                            }
+                        }
                     }
                 }
             }

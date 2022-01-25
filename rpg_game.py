@@ -117,7 +117,7 @@ if __name__ == '__main__':
             action = game_functions.action_menu(game)
             
             if action.split("_")[0] == "speak":
-                game = npc_functions.speak_to(game, action.split("_")[1])
+                game = npc_functions.start_dialogue(game, action.split("_")[1])
             elif action.split("_")[0] == "enter":
                 game = map_functions.enter(game, action.split("_")[1])
             elif action.split("_")[0] == "go":
