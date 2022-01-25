@@ -9,6 +9,7 @@ import utils.items_functions as items_functions
 import utils.map_functions as map_functions
 import utils.quests_functions as quests_functions
 import utils.npc_functions as npc_functions
+import utils.graphic_functions as graphic_functions
 
 GAME_DIR = "./Games_you_can_play/"
 LIST_OF_GAMES = [ games for games in os.listdir(GAME_DIR) if os.path.isdir(GAME_DIR+games)==True]
@@ -106,6 +107,8 @@ if __name__ == '__main__':
         input()
         exit()
     try:
+        graphic_functions.setup()
+        graphic_functions.display(game)
         os.system("clear")
         if game["exposition_text"]["was_played"] != "True":
             game_functions.play_exposition(game)
