@@ -1,3 +1,5 @@
+from random import randint
+
 LEVEL_DIFFICULTY = {"0":"Don't hurt me", "1":"Hurt me plenty", "2":"Ultra-violence"}
 
 def difficulty_choice():
@@ -40,7 +42,7 @@ def action_menu(game):
                 options.append("There is a shrine here, pray.pray_"+cults)
         for dungeon in game["map"]["dungeons"]:
             if game["player"]["location"]["x"] == game["map"]["dungeons"][dungeon]["location"]["x"] and game["player"]["location"]["y"] == game["map"]["dungeons"][dungeon]["location"]["y"]:
-                options.append("There is a dungeon here, dungeon.dungeon_enter")
+                options.append("There is a dungeon here .dungeon_"+dungeon)
     
     else:
         place = game["player"]["location"]["detail"].split(".")
@@ -70,3 +72,8 @@ def action_menu(game):
         userChoice = str(input("\nWhat do you want to do ? "))
 
     return choices[userChoice]
+
+def dice(game):
+    game = game
+    response = randint(1, 6)
+    return response

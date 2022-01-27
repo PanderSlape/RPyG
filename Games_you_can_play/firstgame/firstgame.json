@@ -134,6 +134,20 @@
         "potions.000010": "potions.000001.potions.000000.misc.000000",
         "potions.000011": "misc.000001.potions.000000.misc.000000"
     },
+    "enemies": {
+        "bear": {
+            "description": "A huge bear runs towards you, you must fight !",
+            "move-set": {
+                "1": "atk.15",
+                "2": "atk.15",
+                "3": "res.5",
+                "4": "res.5",
+                "5": "idle",
+                "6": "idle"
+            },
+            "hp": 60
+        }
+    },
     "map": {
         "dimension": {
             "x": 50,
@@ -169,17 +183,17 @@
             }
         },
         "dungeons": {
-            "dungeon_one":{
+            "The-silver-crypt":{
                 "location": {
-                    "x": 6,
-                    "y": 6
+                    "x": 9,
+                    "y": 9
                 },
-                "level_one": {
-                    "hostiles": ["bear"]
+                "description": "You enter a silver lined wooden door, as you enter you feel a sense of dread chilling your bones. Yet you still push foward !",
+                "levels" :{
+                    "level_one": ["bear"],
+                    "level_two": ["bear"]
                 },
-                "level_two": {
-                    "chest": ["potion.000010", "money.50"]
-                }
+                "chest": ["potion.000010", "money.50"]
             }
         },
         "landmarks": {}

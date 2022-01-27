@@ -1,4 +1,6 @@
 import utils.game_functions as game_functions
+import utils.items_functions as items_functions
+from copy import deepcopy
 
 def player_init(player):
     """
@@ -108,3 +110,51 @@ def pay(game, character, coins):
     city = game["player"]["location"]["detail"].split(".")[0]
     game["characters"][character]["inventory"][city]["money"] += coins
     return game
+
+def fight(game, enemy):
+    try:
+
+        enemy_info = deepcopy(game["enemies"][enemy])
+        print(enemy_info["description"])
+
+        while enemy_info["hp"] >= 1:
+            player_choice = combat_menu(game)
+            enemy_choice = game_functions.dice(game)
+
+            if player_choice.split("_")[0] == "dmg":
+                enemy_info["hp"] -= int(player_choice.split("_")[1])
+            elif player_choice.split("_")[0] == "inventory":
+                game = items_functions.check_inventory(game)
+            elif player_choice.split("_")[0] == "craft":
+                game = items_functions.craft_menu(game)
+
+            if enemy_info["move-set"][str(enemy_choice)].split(".")[0] == "atk":
+                game = lose_hp(game, int(enemy_info["move-set"][str(enemy_choice)].split(".")[1]))
+            elif enemy_info["move-set"][str(enemy_choice)].split(".")[0] == "res":
+                hp = int(enemy_info["move-set"][str(enemy_choice)].split(".")[1])
+                print(enemy+" has healed by "+str(hp)+" hp")
+                enemy_info["hp"] += hp
+
+        return game
+    except Exception as e:
+        print(e)
+
+def combat_menu(game):
+    weapon_of_player = game["player"]["inventory"]["weapons"]["equipped"]
+
+    options = []
+    options.append("Attack ."+game["items_available"]["weapons"][weapon_of_player]["effect"].replace(".", "_"))
+    options.append("Use inventory .inventory")
+    options.append("Craft something .craft")
+    choices = {}
+
+    for i in range(len(options)):
+        print("["+str(i)+"] :\t"+options[i].split(".")[0])
+        choices[str(i)] = options[i].split(".")[1]
+
+    userChoice = str(input("\nWhat do you want to do ? "))
+
+    while userChoice not in choices:
+        userChoice = str(input("\nWhat do you want to do ? "))
+
+    return choices[userChoice]

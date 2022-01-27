@@ -118,6 +118,8 @@ if __name__ == '__main__':
             
             if action.split("_")[0] == "speak":
                 game = npc_functions.start_dialogue(game, action.split("_")[1])
+            elif action.split("_")[0] == "dungeon":
+                game = quests_functions.enter_dungeon(game, action.split("_")[1])
             elif action.split("_")[0] == "enter":
                 game = map_functions.enter(game, action.split("_")[1])
             elif action.split("_")[0] == "go":
