@@ -80,7 +80,4 @@ def dice(game):
 
 def game_over(game):
     print("You died")
-    if game["game"]["difficutly"] == 2:
-        if dice(game) == 1:
-            game = "YOU DIED"
     exit()

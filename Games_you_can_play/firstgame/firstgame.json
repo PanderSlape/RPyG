@@ -65,6 +65,7 @@
                 "effect": "dmg.10",
                 "name": "Average sword",
                 "description": "A very blunt edge, might not be very efficient but you can hit with it ? Right ?",
+                "price": 15,
                 "luck": 0
             }
         },
@@ -74,6 +75,7 @@
                 "effect": "heal.10",
                 "name": "Honey",
                 "description": "A very basic healing product, can be used to make Mead with water and yeast.",
+                "price": 15,
                 "luck": 0
             },
             "000001" :{
@@ -81,6 +83,7 @@
                 "effect": "heal.1",
                 "name": "water",
                 "description": "You can drink it but you might want to mix it with something to be more effective.",
+                "price": 15,
                 "luck": 0
             },
             "000010" :{
@@ -88,6 +91,7 @@
                 "effect": "heal.50.dice.berserk",
                 "name": "Mead",
                 "description": "A gift from the gods that will help you fight... Maybe, at least it will heal you",
+                "price": 15,
                 "luck": 0
             },
             "000011" :{
@@ -95,6 +99,7 @@
                 "effect": "heal.20",
                 "name": "Lukewarm Beer",
                 "description": "You'd wish it was fresh",
+                "price": 15,
                 "luck": 0
             },
             "000100" :{
@@ -102,6 +107,7 @@
                 "effect": "heal.30",
                 "name": "Fresh Beer",
                 "description": "Enjoy it now. It will not stay fresh for long.",
+                "price": 15,
                 "luck": 0
             }
         },
@@ -111,6 +117,7 @@
                 "effect": "none",
                 "name": "Simple Clothes",
                 "description": "Simple clothes, won't help you against any foe. At least you are not buttfuck naked.",
+                "price": 15,
                 "luck": 0
             }
         },
@@ -120,6 +127,7 @@
                 "effect": "none",
                 "name": "Yeast",
                 "description": "Can be used to make bread and fermented drinks",
+                "price": 15,
                 "luck": 0
             },
             "000001" :{
@@ -127,6 +135,7 @@
                 "effect": "none",
                 "name": "Wheat",
                 "description": "Can be used to make bread and fermented drinks",
+                "price": 15,
                 "luck": 0
             }
         }
@@ -195,7 +204,7 @@
                     "level_one": ["bear"],
                     "level_two": ["bear"]
                 },
-                "chest": ["potions.000010", "money.50", "exp.100"]
+                "chest": ["potions.000010", "exp.100"]
             }
         },
         "landmarks": {}

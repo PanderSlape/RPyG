@@ -9,11 +9,10 @@ def enter_dungeon(game, dungeon_name):
             for enemies in dungeon["levels"][level]:
                 game = player_functions.fight(game, enemies)
 
-        player_inventory = game["player"]["inventory"]
         for item in dungeon["chest"]:
             if item.split(".")[0] == "money":
-                game = player_functions.gain_money(game, item.split(".")[1])
-            if item.split(".")[0] == "exp":
+                game = player_functions.gain_money(game, int(item.split(".")[1]))
+            elif item.split(".")[0] == "exp":
                 game = player_functions.gain_exp(game, int(item.split(".")[1]))
             else:
                 game = items_functions.get_item(game, item.split(".")[0], item.split(".")[1])

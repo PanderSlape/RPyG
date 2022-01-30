@@ -66,7 +66,6 @@ def get_item(game, category, item):
     else:
         game["player"]["inventory"][category]["owned"][item] += 1
 
-    
     return game
 
 def check_inventory(game):

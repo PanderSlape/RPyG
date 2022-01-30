@@ -106,8 +106,8 @@ def check_money(game, coins):
         return False
 
 def gain_money(game, money):
-    print("Gained : "+money+" coins")
-    game["player"]["inventory"]["money"]+=int(money)
+    print("Gained : "+str(money)+" coins")
+    game["player"]["inventory"]["money"]+= money
 
     return game
 
@@ -123,16 +123,20 @@ def fight(game, enemy):
         enemy_info = deepcopy(game["enemies"][enemy])
         print(enemy_info["description"])
 
-        while enemy_info["hp"] >= 1:
+        while True:
             player_choice = combat_menu(game)
             enemy_choice = game_functions.dice(game)
 
             if player_choice.split("_")[0] == "dmg":
+                print("Hit "+enemy+" for "+player_choice.split("_")[1]+" Damage")
                 enemy_info["hp"] -= int(player_choice.split("_")[1])
             elif player_choice.split("_")[0] == "inventory":
                 game = items_functions.check_inventory(game)
             elif player_choice.split("_")[0] == "craft":
                 game = items_functions.craft_menu(game)
+
+            if enemy_info["hp"] < 0:
+                break
 
             if enemy_info["move-set"][str(enemy_choice)].split(".")[0] == "atk":
                 game = lose_hp(game, int(enemy_info["move-set"][str(enemy_choice)].split(".")[1]))
@@ -140,8 +144,10 @@ def fight(game, enemy):
                 hp = int(enemy_info["move-set"][str(enemy_choice)].split(".")[1])
                 print(enemy+" has healed by "+str(hp)+" hp")
                 enemy_info["hp"] += hp
+
+        return game
     except Exception as e:
-        print(game["enemies"][enemy])
+        print(game)
         print(e)
 
 def combat_menu(game):
