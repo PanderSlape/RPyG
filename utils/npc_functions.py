@@ -26,7 +26,6 @@ def start_dialogue(game, character):
             if action == "exit":
                 return game
             elif action.split(".")[0] == "dialogue":
-                print(action.split(".")[1])
                 game = continue_dialogue(game, character, action.split(".")[1])
             elif action.split(".")[0] == "wait":
                 game = game_functions.spend_time(game, int(action.split(".")[1]))
@@ -86,15 +85,15 @@ def continue_dialogue(game, character, following_dialogue):
 def trade_menu(game, character):
     try:
         options = []
-        options.append("I want to buy .buy")
-        options.append("I want to sell .sell")
-        options.append("I want to go .exit")
+        options.append("I want to buy -buy")
+        options.append("I want to sell -sell")
+        options.append("I want to go -exit")
 
         choices = {}
 
         for i in range(len(options)):
-            print("["+str(i)+"] :\t"+options[i].split(".")[0])
-            choices[str(i)] = options[i].split(".")[1]
+            print("["+str(i)+"] :\t"+options[i].split("-")[0])
+            choices[str(i)] = options[i].split("-")[1]
 
         userChoice = str(input("\nWhat do you want to do ? "))
 
@@ -105,8 +104,7 @@ def trade_menu(game, character):
             game = trade_buy(game, character)
         elif choices[userChoice] == "sell":
             game = trade_sell(game, character)
-        else:
-            return game
+        return game
     except Exception as e:
         print(e)
 
@@ -114,17 +112,15 @@ def choose_category():
     try:
         options = []
         choices = {}
-        options.append("List weapons .weapons")
-        options.append("List potions .potions")
-        options.append("List armor .armor")
-        options.append("List miscellaneous .misc")
-        options.append("Exit inventory .exit")
-
-        print(options)
+        options.append("List weapons -weapons")
+        options.append("List potions -potions")
+        options.append("List armor -armor")
+        options.append("List miscellaneous -misc")
+        options.append("Exit inventory -exit")
 
         for i in range(len(options)):
-            print("["+str(i)+"] :\t"+options[i].split(".")[0])
-            choices[str(i)] = options[i].split(".")[1]
+            print("["+str(i)+"] :\t"+options[i].split("-")[0])
+            choices[str(i)] = options[i].split("-")[1]
 
         userChoice = str(input("\nWhat do you want to do ? "))
 
@@ -133,8 +129,6 @@ def choose_category():
 
         action = choices[userChoice]
 
-        print(action)
-
         return action
     except Exception as e:
         print(e)
@@ -142,15 +136,20 @@ def choose_category():
 def give_item(game, character, category, item):
     try:
         print("Sold : "+game["items_available"][category][item]["name"])
+        print(game["characters"][character]["inventory"][game["player"]["location"]["detail"].split(".")[0]][category])
         character_inventory = game["characters"][character]["inventory"][game["player"]["location"]["detail"].split(".")[0]][category]
         if item not in character_inventory:
-            character_inventory = 1
+            print("ping")
+            character_inventory[item] = 1
         else:
-            character_inventory += 1
+            print("ping")
+            character_inventory[item] += 1
 
         game["player"]["inventory"][category]["owned"][item]-=1
         if game["player"]["inventory"][category]["owned"][item] == 0:
             del game["player"]["inventory"][category]["owned"][item]
+        
+        print(game)
 
         return game
     except Exception as e:
@@ -218,7 +217,6 @@ def trade_sell(game, character):
         while True:
             category = choose_category()
             if category == "exit":
-                print(game)
                 return game
             game = look_inventory(game, category)
     except Exception as e:

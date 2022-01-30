@@ -62,8 +62,8 @@ def gain_exp(game, exp):
 def gain_hp(game, hp):
     try:
         print("Gained : "+str(hp)+" hp")
-        if game["player"]["hp"] + hp >= 100:
-            game["player"]["hp"]=100
+        if game["player"]["hp"] + hp >= game["player"]["hp_max"]:
+            game["player"]["hp"]=game["player"]["hp_max"]
         else:
             game["player"]["hp"]+=hp
     except Exception as e:
@@ -89,6 +89,7 @@ def lose_hp(game, hp):
 def gain_lvl(game):
     print("Gained : 1 level")
     game["player"]["lvl"]+=1
+    game["player"]["hp_max"]+=25
 
     return game
 
@@ -147,21 +148,20 @@ def fight(game, enemy):
 
         return game
     except Exception as e:
-        print(game)
         print(e)
 
 def combat_menu(game):
     weapon_of_player = game["player"]["inventory"]["weapons"]["equipped"]
 
     options = []
-    options.append("Attack ."+game["items_available"]["weapons"][weapon_of_player]["effect"].replace(".", "_"))
-    options.append("Use inventory .inventory")
-    options.append("Craft something .craft")
+    options.append("Attack -"+game["items_available"]["weapons"][weapon_of_player]["effect"].replace(".", "_"))
+    options.append("Use inventory -inventory")
+    options.append("Craft something -craft")
     choices = {}
 
     for i in range(len(options)):
-        print("["+str(i)+"] :\t"+options[i].split(".")[0])
-        choices[str(i)] = options[i].split(".")[1]
+        print("["+str(i)+"] :\t"+options[i].split("-")[0])
+        choices[str(i)] = options[i].split("-")[1]
 
     userChoice = str(input("\nWhat do you want to do ? "))
 

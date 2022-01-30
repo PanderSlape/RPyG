@@ -61,45 +61,51 @@
     "items_available": {
         "weapons": {
             "000000" :{
-                "type": "sword",
+                "type": "weapons",
                 "effect": "dmg.10",
                 "name": "Average sword",
                 "description": "A very blunt edge, might not be very efficient but you can hit with it ? Right ?",
+                "price": 10,
                 "luck": 0
                 },
-	        "000001": {
+            "000001": {
                 "type": "weapons",
                 "effect": "dmg.10",
                 "name": "Average sarch",
                 "description": "A feverish bow but could still kill a squirrel ? Right ?",
+                "price": 12,
                 "luck": 0
-	            },
-	        "000010": {
+                },
+            "000010": {
                 "type": "weapons",
                 "effect": "dmg.10",
                 "name": "Average stick",
                 "description": "A faint residue of magic emanates from it",
+                "price": 10,
                 "luck": 1
                 },
-	        "000011": {
+            "000011": {
                 "type": "weapons",
-                "effect": "dmg.20",
+                "effect": "dmg.25",
                 "name": "forged sword",
                 "description": "A blade forged by a skilled blacksmith! It is only waiting for the fight.",
+                "price": 50,
                 "luck": 2
                 },
-	        "000100": {
+            "000100": {
                 "type": "weapons",
                 "effect": "dmg.23",
                 "name": "forged arch",
                 "description": "Even a chain mail will tremble at the sight of this bow",
+                "price": 45,
                 "luck": 2
                 },
-	        "000101": {
+            "000101": {
                 "type": "weapons",
                 "effect": "dmg.30",
                 "name": "forged stick",
                 "description": "You'll feel rejuvenated by this powerful artifact",
+                "price": 45,
                 "luck": 2
             }
         },
@@ -109,6 +115,7 @@
                 "effect": "heal.10",
                 "name": "Honey",
                 "description": "A very basic healing product, can be used to make Mead with water and yeast.",
+                "price": 7,
                 "luck": 0
             },
             "000001" :{
@@ -116,6 +123,7 @@
                 "effect": "heal.1",
                 "name": "water",
                 "description": "You can drink it but you might want to mix it with something to be more effective.",
+                "price": 2,
                 "luck": 0
             },
             "000010" :{
@@ -123,6 +131,7 @@
                 "effect": "heal.50.dice.berserk",
                 "name": "Mead",
                 "description": "A gift from the gods that will help you fight... Maybe, at least it will heal you",
+                "price": 75,
                 "luck": 0
             },
             "000011" :{
@@ -130,6 +139,7 @@
                 "effect": "heal.20",
                 "name": "Lukewarm Beer",
                 "description": "You'd wish it was fresh",
+                "price": 30,
                 "luck": 0
             },
             "000100" :{
@@ -137,6 +147,7 @@
                 "effect": "heal.30",
                 "name": "Fresh Beer",
                 "description": "Enjoy it now. It will not stay fresh for long.",
+                "price": 20,
                 "luck": 0
             }
         },
@@ -146,34 +157,39 @@
                 "effect": "none",
                 "name": "Simple Clothes",
                 "description": "Simple clothes, won't help you against any foe. At least you are not buttfuck naked.",
+                "price": 10,
                 "luck": 0
             },
-	        "000001": {
+            "000001": {
                 "type": "clothing",
                 "effect": "none",
                 "name": "Simple Leather",
                 "description": "Nice leather clothes, so you don't get bitten by a squirrel.",
+                "price": 17,
                 "luck": 0
             },
-	        "000010": {
+            "000010": {
                 "type": "clothing",
                 "effect": "armor.15",
                 "name": "Simple chain mail",
                 "description": "A layer of iron protects you from fangs and daggers.",
+                "price": 25,
                 "luck": 1
             },
-	        "000011": {
+            "000011": {
                 "type": "clothing",
                 "effect": "armor.35",
                 "name": "Complex Armor",
                 "description": "You don't fear blades and arrows anymore.",
+                "price": 1000,
                 "luck": 3
             },
-	        "000100": {
+            "000100": {
                 "type": "clothing",
-                "effect": "dmg.5.armor.20",
+                "effect": "armor.20",
                 "name": "Enchanted Tunic",
                 "description": "Feel the magic flowing through your being. Tickling is normal.",
+                "price": 2000,
                 "luck": 3
             }
         },
@@ -183,6 +199,7 @@
                 "effect": "none",
                 "name": "Yeast",
                 "description": "Can be used to make bread and fermented drinks",
+                "price": 10,
                 "luck": 0
             },
             "000001" :{
@@ -190,57 +207,62 @@
                 "effect": "none",
                 "name": "Wheat",
                 "description": "Can be used to make bread and fermented drinks",
+                "price": 10,
                 "luck": 0
             },
-	        "000010": {
+            "000010": {
                 "type": "ingredient",
                 "effect": "none",
                 "name": "Flour",
                 "description": "Can be used to make bread",
+                "price": 5,
                 "luck": 0
             },
-	        "000100": {
+            "000100": {
                 "type": "ingredient",
                 "effect": "none",
                 "name": "Chamomile",
                 "description": "Can be used to make potion against fever",
+                "price": 2,
                 "luck": 0
             },
-	        "000101": {
+            "000101": {
                 "type": "ingredient",
                 "effect": "none",
                 "name": "Mint",
                 "description": "Can be used to make potion or mojito",
+                "price": 15,
                 "luck": 0
             },
-	        "000111": {
+            "000111": {
                 "type": "ingredient",
                 "effect": "none",
                 "name": "Meat",
                 "description": "Meat",
+                "price": 20,
                 "luck": 0
             },
-	        "001000": {
+            "001000": {
                 "type": "ingredient",
                 "effect": "none",
                 "name": "Fish",
                 "description": "Fish",
+                "price": 25,
                 "luck": 0
             },
-	        "001001": {
+            "001001": {
                 "type": "ingredient",
                 "effect": "none",
                 "name": "Salt",
                 "description": "Can be used to increase durability",
+                "price": 1,
                 "luck": 0
             }
         }
     },
     "recipes": {
         "potions.000010": "potions.000001.potions.000000.misc.000000",
-        "potions.000011": "misc.000001.potions.000000.misc.000000",
-	    "potions.001000": "potions.000001.misc.000111.misc.001001",
-	    "potions.001001": "potions.000001.misc.001000.misc.001001"
+        "potions.000011": "misc.000001.potions.000000.misc.000000"
     },
     "enemies": {
         "bear": {
@@ -253,10 +275,10 @@
                 "5": "idle",
                 "6": "idle"
             },
-            "hp": 60,
-	        "exp": 10
+            "hp": 80,
+            "exp": 10
         },
-	    "wolf": {
+        "wolf": {
             "description": "A group of wolves is surrounding you, you must fight them!",
             "move-set": {
                 "1": "atk.8",
@@ -266,10 +288,10 @@
                 "5": "res.6",
                 "6": "res.7"
             },
-            "hp": 250,
-	        "exp": 50
+            "hp": 150,
+            "exp": 50
         },
-	    "dark knight": {
+        "dark knight": {
             "description": "The black knight looks at you from the center of the room, you must fight him!",
             "move-set": {
                 "1": "atk.5",
@@ -280,7 +302,7 @@
                 "6": "res.40"
             },
             "hp": 500,
-	        "exp": 1000
+            "exp": 1000
         }
     },
     "map": {
@@ -296,42 +318,43 @@
                 },
                 "buildings" :{
                     "inn": {
-                    "lobby": {
-                        "characters_inside": ["innkeeper", "drunk bum","bard","adventurer"],
-                        "description_text": "When you enter this inn you will see a bard singing the praises of various adventurers to the boisterous rhythm of dancers and waitresses bringing their beers to travelers. The innkeeper looks at you as if waiting for your order. "
+                        "lobby": {
+                            "characters_inside": ["innkeeper", "drunk bum","bard","adventurer"],
+                            "description_text": "When you enter this inn you will see a bard singing the praises of various adventurers to the boisterous rhythm of dancers and waitresses bringing their beers to travelers. The innkeeper looks at you as if waiting for your order. "
+                        }
                     }
                 }
-            }
-        },
-	    "Hobbitebourg": {
+            },
+        "Hobbitebourg": {
                 "location": {
                     "x": 14,
                     "y": 14
                 },
                 "buildings" :{
                     "inn": {
-                    "lobby": {
-                        "characters_inside": ["innkeeper", "drunk bum","bard","adventurer"],
-                        "description_text": "When you enter the inn you see only some adventurer in good condition. Several adventurers seem to be in a very bad shape, the forest they just passed through as well as the wolves have damaged them a lot. "
+                        "lobby": {
+                            "characters_inside": ["innkeeper", "drunk bum","bard","adventurer"],
+                            "description_text": "When you enter the inn you see only some adventurer in good condition. Several adventurers seem to be in a very bad shape, the forest they just passed through as well as the wolves have damaged them a lot. "
+                        }
                     }
                 }
             },
-	    "Minas Tirith": {
+        "Minas Tirith": {
                 "location": {
                     "x": 32,
                     "y": 32
                 },
                 "buildings" :{
                     "inn": {
-                    "lobby": {
-                        "characters_inside": ["innkeeper", "adventurer"],
-                        "description_text": "When you enter the hostel. Only a dozen adventurers all dressed in armor bigger than each other with tons of equipment. All seem ready to face the black tower. "
+                        "lobby": {
+                            "characters_inside": ["innkeeper", "adventurer"],
+                            "description_text": "When you enter the hostel. Only a dozen adventurers all dressed in armor bigger than each other with tons of equipment. All seem ready to face the black tower. "
+                        }
                     }
                 },
                 "faction": 0
             }
-        }
-    },
+        },
     "cult": {
         "Lindenvale's shrine": {
                 "location": {
@@ -340,14 +363,14 @@
                 },
                 "uses": 5
             },
-	    "Hobbitebourg's shrine": {
+        "Hobbitebourg's shrine": {
                 "location": {
                     "x": 15,
                     "y": 15
                 },
                 "uses": 7
         },
-	    "Minas Tirith's shrine": {
+        "Minas Tirith's shrine": {
                 "location": {
                     "x": 33,
                     "y": 33
@@ -368,7 +391,7 @@
                 },
                 "chest": ["potions.000000", "potions.000001", "money.40", "exp.50"]
             },
-	        "The forbidden forest": {
+            "The forbidden forest": {
                 "location": {
                     "x": 12,
                     "y": 12
@@ -380,7 +403,7 @@
                 },
                 "chest": ["potions.000010", "money.70", "exp.75"]
             },
-	        "The black tower":{
+            "The black tower":{
                 "location": {
                     "x": 35,
                     "y": 35
@@ -395,7 +418,6 @@
             }
         },
         "landmarks": {}
-        }
     },
     "quests": {},
     "characters": {
@@ -408,14 +430,14 @@
                     "misc": {"misc.000111": 50, "misc.001000": 50, "misc.001001": 50},
                     "money": 1000
                 },
-		        "Hobbitebourg": {
+                "Hobbitebourg": {
                     "weapons": {"weapons.000000": 5, "weapons.000001": 9, "weapons.000010": 4},
                     "potions": {"potions.000001": 50},
                     "armor": {"armor.000011": 3},
                     "misc": {"misc.000111": 80, "misc.001000": 50, "misc.001001": 50, "misc.000010": 50, "misc.000101": 50},
                     "money": 1200
                 },
-		        "Minas Tirith": {
+                "Minas Tirith": {
                     "weapons": {"weapons.000000": 50, "weapons.000001": 50, "weapons.000010": 50, "weapons.000011": 50, "weapons.000100": 50, "weapons.000101": 50},
                     "potions": {"potions.000010": 50, "potions.000001": 50},
                     "armor": {"armor.000011": 50},

@@ -39,9 +39,9 @@ def pray(game, cult):
 def go(game, direction):
     # Move on the map
     if direction =="north":
-        game["player"]["location"]["y"]+=1
-    if direction =="south":
         game["player"]["location"]["y"]-=1
+    if direction =="south":
+        game["player"]["location"]["y"]+=1
     if direction =="east":
         game["player"]["location"]["x"]+=1
     if direction =="west":
