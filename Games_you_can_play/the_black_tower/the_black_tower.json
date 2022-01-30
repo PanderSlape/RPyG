@@ -1,0 +1,502 @@
+{
+    "game":{
+        "difficutly":1,
+        "time":{ 
+            "hours":"06",
+            "minutes":"00"
+        }
+    },
+    "player": {
+        "name": "Playa",
+        "ability": 5,
+        "strength": 5,
+        "exp": 0,
+        "lvl": 1,
+        "hp": 100,
+        "hp_max": 100,
+        "location":{
+            "x": 10,
+            "y": 10,
+            "detail": "Lindenvale.inn.lobby" 
+        },
+        "inventory": {
+            "weapons": {
+                "equipped": "000000",
+                "owned": {
+                    "000000": 1
+                }
+            },
+            "potions": {
+                "owned": {
+                    "000000": 10,
+                    "000001": 10
+                }
+            },
+            "armor": {
+                "equipped": "000000",
+                "owned": {
+                    "000000": 1
+                }
+            },
+            "misc": {
+                "owned": {
+                    "000000": 10
+                }
+            },
+            "money": 100
+        },
+        "rep": {
+            "faction_one": {
+                "name": "Hargh",
+                "reputation": 5,
+                "bonus": "strength"
+            },
+            "faction_two": {
+                "name": "Eldar",
+                "reputation": 5,
+                "bonus": "ability"
+            }
+        }
+    },
+    "items_available": {
+        "weapons": {
+            "000000" :{
+                "type": "sword",
+                "effect": "dmg.10",
+                "name": "Average sword",
+                "description": "A very blunt edge, might not be very efficient but you can hit with it ? Right ?",
+                "luck": 0
+                },
+	        "000001": {
+                "type": "weapons",
+                "effect": "dmg.10",
+                "name": "Average sarch",
+                "description": "A feverish bow but could still kill a squirrel ? Right ?",
+                "luck": 0
+	            },
+	        "000010": {
+                "type": "weapons",
+                "effect": "dmg.10",
+                "name": "Average stick",
+                "description": "A faint residue of magic emanates from it",
+                "luck": 1
+                },
+	        "000011": {
+                "type": "weapons",
+                "effect": "dmg.20",
+                "name": "forged sword",
+                "description": "A blade forged by a skilled blacksmith! It is only waiting for the fight.",
+                "luck": 2
+                },
+	        "000100": {
+                "type": "weapons",
+                "effect": "dmg.23",
+                "name": "forged arch",
+                "description": "Even a chain mail will tremble at the sight of this bow",
+                "luck": 2
+                },
+	        "000101": {
+                "type": "weapons",
+                "effect": "dmg.30",
+                "name": "forged stick",
+                "description": "You'll feel rejuvenated by this powerful artifact",
+                "luck": 2
+            }
+        },
+        "potions": {
+            "000000" :{
+                "type": "healing.ingredient",
+                "effect": "heal.10",
+                "name": "Honey",
+                "description": "A very basic healing product, can be used to make Mead with water and yeast.",
+                "luck": 0
+            },
+            "000001" :{
+                "type": "healing.ingredient",
+                "effect": "heal.1",
+                "name": "water",
+                "description": "You can drink it but you might want to mix it with something to be more effective.",
+                "luck": 0
+            },
+            "000010" :{
+                "type": "healing.berserk",
+                "effect": "heal.50.dice.berserk",
+                "name": "Mead",
+                "description": "A gift from the gods that will help you fight... Maybe, at least it will heal you",
+                "luck": 0
+            },
+            "000011" :{
+                "type": "healing",
+                "effect": "heal.20",
+                "name": "Lukewarm Beer",
+                "description": "You'd wish it was fresh",
+                "luck": 0
+            },
+            "000100" :{
+                "type": "healing",
+                "effect": "heal.30",
+                "name": "Fresh Beer",
+                "description": "Enjoy it now. It will not stay fresh for long.",
+                "luck": 0
+            }
+        },
+        "armor": {
+            "000000": {
+                "type": "clothing",
+                "effect": "none",
+                "name": "Simple Clothes",
+                "description": "Simple clothes, won't help you against any foe. At least you are not buttfuck naked.",
+                "luck": 0
+            },
+	        "000001": {
+                "type": "clothing",
+                "effect": "none",
+                "name": "Simple Leather",
+                "description": "Nice leather clothes, so you don't get bitten by a squirrel.",
+                "luck": 0
+            },
+	        "000010": {
+                "type": "clothing",
+                "effect": "armor.15",
+                "name": "Simple chain mail",
+                "description": "A layer of iron protects you from fangs and daggers.",
+                "luck": 1
+            },
+	        "000011": {
+                "type": "clothing",
+                "effect": "armor.35",
+                "name": "Complex Armor",
+                "description": "You don't fear blades and arrows anymore.",
+                "luck": 3
+            },
+	        "000100": {
+                "type": "clothing",
+                "effect": "dmg.5.armor.20",
+                "name": "Enchanted Tunic",
+                "description": "Feel the magic flowing through your being. Tickling is normal.",
+                "luck": 3
+            }
+        },
+        "misc": {
+            "000000" :{
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Yeast",
+                "description": "Can be used to make bread and fermented drinks",
+                "luck": 0
+            },
+            "000001" :{
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Wheat",
+                "description": "Can be used to make bread and fermented drinks",
+                "luck": 0
+            },
+	        "000010": {
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Flour",
+                "description": "Can be used to make bread",
+                "luck": 0
+            },
+	        "000100": {
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Chamomile",
+                "description": "Can be used to make potion against fever",
+                "luck": 0
+            },
+	        "000101": {
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Mint",
+                "description": "Can be used to make potion or mojito",
+                "luck": 0
+            },
+	        "000111": {
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Meat",
+                "description": "Meat",
+                "luck": 0
+            },
+	        "001000": {
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Fish",
+                "description": "Fish",
+                "luck": 0
+            },
+	        "001001": {
+                "type": "ingredient",
+                "effect": "none",
+                "name": "Salt",
+                "description": "Can be used to increase durability",
+                "luck": 0
+            }
+        }
+    },
+    "recipes": {
+        "potions.000010": "potions.000001.potions.000000.misc.000000",
+        "potions.000011": "misc.000001.potions.000000.misc.000000",
+	    "potions.001000": "potions.000001.misc.000111.misc.001001",
+	    "potions.001001": "potions.000001.misc.001000.misc.001001"
+    },
+    "enemies": {
+        "bear": {
+            "description": "A huge bear runs towards you, you must fight !",
+            "move-set": {
+                "1": "atk.15",
+                "2": "atk.15",
+                "3": "res.5",
+                "4": "res.5",
+                "5": "idle",
+                "6": "idle"
+            },
+            "hp": 60,
+	        "exp": 10
+        },
+	    "wolf": {
+            "description": "A group of wolves is surrounding you, you must fight them!",
+            "move-set": {
+                "1": "atk.8",
+                "2": "atk.9",
+                "3": "atk.10",
+                "4": "res.5",
+                "5": "res.6",
+                "6": "res.7"
+            },
+            "hp": 250,
+	        "exp": 50
+        },
+	    "dark knight": {
+            "description": "The black knight looks at you from the center of the room, you must fight him!",
+            "move-set": {
+                "1": "atk.5",
+                "2": "atk.15",
+                "3": "res.30",
+                "4": "res.5",
+                "5": "res.15",
+                "6": "res.40"
+            },
+            "hp": 500,
+	        "exp": 1000
+        }
+    },
+    "map": {
+        "dimension": {
+            "x": 50,
+            "y": 50
+        },
+        "cities": {
+            "Lindenvale": {
+                "location": {
+                    "x": 10,
+                    "y": 10
+                },
+                "buildings" :{
+                    "inn": {
+                    "lobby": {
+                        "characters_inside": ["innkeeper", "drunk bum","bard","adventurer"],
+                        "description_text": "When you enter this inn you will see a bard singing the praises of various adventurers to the boisterous rhythm of dancers and waitresses bringing their beers to travelers. The innkeeper looks at you as if waiting for your order. "
+                    }
+                }
+            }
+        },
+	    "Hobbitebourg": {
+                "location": {
+                    "x": 14,
+                    "y": 14
+                },
+                "buildings" :{
+                    "inn": {
+                    "lobby": {
+                        "characters_inside": ["innkeeper", "drunk bum","bard","adventurer"],
+                        "description_text": "When you enter the inn you see only some adventurer in good condition. Several adventurers seem to be in a very bad shape, the forest they just passed through as well as the wolves have damaged them a lot. "
+                    }
+                }
+            },
+	    "Minas Tirith": {
+                "location": {
+                    "x": 32,
+                    "y": 32
+                },
+                "buildings" :{
+                    "inn": {
+                    "lobby": {
+                        "characters_inside": ["innkeeper", "adventurer"],
+                        "description_text": "When you enter the hostel. Only a dozen adventurers all dressed in armor bigger than each other with tons of equipment. All seem ready to face the black tower. "
+                    }
+                },
+                "faction": 0
+            }
+        }
+    },
+    "cult": {
+        "Lindenvale's shrine": {
+                "location": {
+                    "x": 11,
+                    "y": 11
+                },
+                "uses": 5
+            },
+	    "Hobbitebourg's shrine": {
+                "location": {
+                    "x": 15,
+                    "y": 15
+                },
+                "uses": 7
+        },
+	    "Minas Tirith's shrine": {
+                "location": {
+                    "x": 33,
+                    "y": 33
+                },
+                "uses": 10
+            }
+        },
+        "dungeons": {
+            "The-silver-crypt":{
+                "location": {
+                    "x": 9,
+                    "y": 9
+                },
+                "description": "You enter a silver lined wooden door, as you enter you feel a sense of dread chilling your bones. Yet you still push foward !",
+                "levels" :{
+                    "level_one": ["bear"],
+                    "level_two": ["bear"]
+                },
+                "chest": ["potions.000000", "potions.000001", "money.40", "exp.50"]
+            },
+	        "The forbidden forest": {
+                "location": {
+                    "x": 12,
+                    "y": 12
+                },
+                "description": "You enter a silver lined wooden door, as you enter you feel a sense of dread chilling your bones. Yet you still push foward !",
+                "levels" :{
+                    "level_one": ["bear"],
+                    "level_two": ["wolf"]
+                },
+                "chest": ["potions.000010", "money.70", "exp.75"]
+            },
+	        "The black tower":{
+                "location": {
+                    "x": 35,
+                    "y": 35
+                },
+                "description": "You enter a silver lined wooden door, as you enter you feel a sense of dread chilling your bones. Yet you still push foward !",
+                "levels" :{
+                    "level_one": ["bear"],
+                    "level_two": ["wolf"],
+                    "level_tree": ["dark knight"]
+                },
+                "chest": ["potions.000010","potions.000010","potions.000010", "money.150", "exp.150"]
+            }
+        },
+        "landmarks": {}
+        }
+    },
+    "quests": {},
+    "characters": {
+        "innkeeper": {
+            "inventory": {
+                "Lindenvale": {
+                    "weapons": {"weapons.000000": 3, "weapons.000001" : 9, "weapons.000010": 10},
+                    "potions": {"potions.000001": 50},
+                    "armor": {"armor.000011": 3},
+                    "misc": {"misc.000111": 50, "misc.001000": 50, "misc.001001": 50},
+                    "money": 1000
+                },
+		        "Hobbitebourg": {
+                    "weapons": {"weapons.000000": 5, "weapons.000001": 9, "weapons.000010": 4},
+                    "potions": {"potions.000001": 50},
+                    "armor": {"armor.000011": 3},
+                    "misc": {"misc.000111": 80, "misc.001000": 50, "misc.001001": 50, "misc.000010": 50, "misc.000101": 50},
+                    "money": 1200
+                },
+		        "Minas Tirith": {
+                    "weapons": {"weapons.000000": 50, "weapons.000001": 50, "weapons.000010": 50, "weapons.000011": 50, "weapons.000100": 50, "weapons.000101": 50},
+                    "potions": {"potions.000010": 50, "potions.000001": 50},
+                    "armor": {"armor.000011": 50},
+                    "misc": {"misc.000111": 50, "misc.001000": 50, "misc.001001": 50, "misc.000010": 50, "misc.000101": 50},
+                    "money": 1500
+                }
+            },
+            "dialogue": {
+                "general": {
+                    "0": {
+                        "speak" : "Hello, What do you want ?",
+                        "responses":{
+                            "0": {
+                                "response": "I just want to sit here a bit !",
+                                "action": "wait.60"
+                            },
+                            "1": {
+                                "response": "May we trade ?",
+                                "action": "dialogue.exchange"
+                            },
+                            "2": {
+                                "response": "May i sleep ?",
+                                "action": "dialogue.sleep"
+                            },
+                            "3": {
+                                "response": "Nothing.",
+                                "action": "exit"
+                            }
+                        }
+                    },
+                    "sleep": {
+                        "speak" : "Of course. It's gonna cost you 15 coins",
+                        "responses": {
+                            "0": {
+                                "response": "Ok, i'll sleep",
+                                "action": "pay.15.sleep.360"
+                            },
+                            "1": {
+                                "response": "Maybe later",
+                                "action": "exit"
+                            }
+                        }
+                    },
+                    "exchange": {
+                        "speak" : "Of course, I can buy from you and sell to you",
+                        "responses": {
+                            "0": {
+                                "response": "Ok, let's trade",
+                                "action": "trade"
+                            },
+                            "1": {
+                                "response": "Maybe later",
+                                "action": "exit"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "drunk bum": {
+            "dialogue": {
+                "general": {
+                    "0": {
+                        "speak" : "*Buuurp* You don't frighten us, English pig-dogs! Go and boil your bottom, sons of a silly person. I blow my nose at you, so-called Arthur King, you and all your silly English k-nnnnniggets. Thpppppt! Thppt! Thppt! .",
+                        "responses": {
+                            "0": {
+                                "response": "What a strange person.",
+                                "action": "exit"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "exposition_text": {
+        "was_played": "False",
+        "exposition": "You wake up, You feel the wooden counter under your cheek.\nYou barely remember the night.\nThe innkeeper says \"Finally awake ? Weren't you supposed to go on a Quest young man ? Something about killing the bear and looting the dungeon ?\".\nYou lift yourself up and say \"Absolutely, I need to go.\""
+    },
+    "end_text": {
+        "was_played": "False",
+        "exposition": "You have slain the biggest bear in the whole kingdom, and gotten a price worth every bite he took out of your flesh !"
+    }
+}
