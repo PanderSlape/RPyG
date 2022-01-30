@@ -30,6 +30,7 @@ def action_menu(game):
         options = []
 
         if game["player"]["location"]["detail"] == "":
+            print("\nYou are located at "+str(game["player"]["location"]["x"])+" toward east and "+str(game["player"]["location"]["y"])+" towards south\n")
             options.append("Travel towards north -go_north")
             options.append("Travel towards east -go_east")
             options.append("Travel towards west -go_west")
@@ -51,7 +52,7 @@ def action_menu(game):
             if place[0] in game["map"]["cities"]:
                 if len(place) == 1:
                     for buildings in game["map"]["cities"][place[0]]["buildings"]:
-                        options.append("You can enter the "+buildings+" -enter_"+buildings+"-lobby")
+                        options.append("You can enter the "+buildings+" -enter_"+buildings+"+lobby")
                     options.append("You can leave the city -leave")
                 elif place[2] == "lobby":
                     print("\n"+game["map"]["cities"][place[0]]["buildings"][place[1]]["lobby"]["description_text"]+"\n")

@@ -139,24 +139,20 @@ def give_item(game, character, category, item):
         print(game["characters"][character]["inventory"][game["player"]["location"]["detail"].split(".")[0]][category])
         character_inventory = game["characters"][character]["inventory"][game["player"]["location"]["detail"].split(".")[0]][category]
         if item not in character_inventory:
-            print("ping")
             character_inventory[item] = 1
         else:
-            print("ping")
             character_inventory[item] += 1
 
         game["player"]["inventory"][category]["owned"][item]-=1
         if game["player"]["inventory"][category]["owned"][item] == 0:
             del game["player"]["inventory"][category]["owned"][item]
-        
-        print(game)
 
         return game
     except Exception as e:
         print(e)
 
-def look_inventory(game, category, character = "You"):
-    if character == "You":
+def look_inventory(game, category, character, inventory_to_check = "You"):
+    if inventory_to_check == "You":
         inventory = game["player"]["inventory"][category]["owned"]
         action = "sell"
     else:
@@ -167,7 +163,10 @@ def look_inventory(game, category, character = "You"):
     choices = {}
 
     for item in inventory:
-            options.append(character+" own "+game["items_available"][category][item]["name"]+" | "+str(inventory[item])+"x | "+str(game["items_available"][category][item]["price"])+" coins "+action+" it-"+item+"-\t"+game["items_available"][category][item]["description"])
+        if action == "buy":
+            options.append(inventory_to_check+" own "+game["items_available"][category][item.split(".")[1]]["name"]+" | "+str(inventory[item])+"x | "+str(game["items_available"][category][item.split(".")[1]]["price"])+" coins "+action+" it-"+item+"-\t"+game["items_available"][category][item.split(".")[1]]["description"])
+        else:
+            options.append(inventory_to_check+" own "+game["items_available"][category][item]["name"]+" | "+str(inventory[item])+"x | "+str(game["items_available"][category][item]["price"])+" coins "+action+" it-"+item+"-\t"+game["items_available"][category][item]["description"])
     options.append("Exit list -exit")
 
     for i in range(len(options)):
@@ -189,9 +188,9 @@ def look_inventory(game, category, character = "You"):
         return game
 
     if action == "buy":
-        if player_functions.check_money(game, game["items_available"][category][item]["price"]) == True:
-            game = player_functions.pay(game, character, game["items_available"][category][item]["price"])
-            game = items_functions.get_item(game, category, item)
+        if player_functions.check_money(game, game["items_available"][category][item.split(".")[1]]["price"]) == True:
+            game = player_functions.pay(game, character, game["items_available"][category][item.split(".")[1]]["price"])
+            game = items_functions.get_item(game, category, item.split(".")[1])
         else:
             print("You don't have the money to do so")
 
@@ -208,7 +207,7 @@ def trade_buy(game, character):
             category = choose_category()
             if category == "exit":
                 return game
-            game = look_inventory(game, category, character)
+            game = look_inventory(game, category, character, character)
     except Exception as e:
         print(e)
 
@@ -218,6 +217,6 @@ def trade_sell(game, character):
             category = choose_category()
             if category == "exit":
                 return game
-            game = look_inventory(game, category)
+            game = look_inventory(game, category, character)
     except Exception as e:
         print(e)

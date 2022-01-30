@@ -325,7 +325,7 @@
                     }
                 }
             },
-        "Hobbitebourg": {
+            "Hobbitebourg": {
                 "location": {
                     "x": 14,
                     "y": 14
@@ -339,7 +339,7 @@
                     }
                 }
             },
-        "Minas Tirith": {
+            "Minas Tirith": {
                 "location": {
                     "x": 32,
                     "y": 32

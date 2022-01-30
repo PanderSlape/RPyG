@@ -3,8 +3,8 @@ import utils.player_functions as player_functions
 
 def enter(game, place):
     # enter a city or a building
-    if len(place.split("-")) != 1:
-        game["player"]["location"]["detail"]+="."+place.split("-")[0]+"."+place.split("-")[1]
+    if len(place.split("+")) != 1:
+        game["player"]["location"]["detail"]+="."+place.split("+")[0]+"."+place.split("+")[1]
     else:
         game["player"]["location"]["detail"]+=place
     game = game_functions.spend_time(game, 5)

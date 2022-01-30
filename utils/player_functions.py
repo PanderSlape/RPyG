@@ -80,6 +80,9 @@ def lose_hp(game, hp):
             game = game_functions.game_over(game)
         else:
             game["player"]["hp"]-=hp
+
+        if game["player"]["hp"] < game["player"]["hp_max"] // 2:
+            print("Warning your health is diminishing greatly")
     except Exception as e:
         print(type(hp))
         print(e)
