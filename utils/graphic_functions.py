@@ -3,6 +3,7 @@ import utils.player_functions
 import utils.game_functions
 import utils.items_functions
 import utils.map_functions
+import re
 
 def setup():
     try:
@@ -23,8 +24,8 @@ def display(game):
         if game["player"]["location"]["detail"] == "":
             map_surface = pygame.Surface((990,490))
             map_surface.fill((20,148,20))
-        elif game["player"]["location"]["detail"] == "Lindenvale.inn.lobby":
-            map_surface = pygame.Surface((990,490)) and pygame.image.load("img/hall_inn_innkeeper.jpg")
+        elif re.match("inn", game["player"]["location"]["detail"]):
+            map_surface = pygame.Surface((990,490)) and pygame.image.load("img/hall_inn.jpg")
         else:
             map_surface = pygame.Surface((990,490)) and pygame.image.load("img/cities.jpg")        
 

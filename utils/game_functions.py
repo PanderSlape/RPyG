@@ -77,3 +77,10 @@ def dice(game):
     game = game
     response = randint(1, 6)
     return response
+
+def game_over(game):
+    print("You died")
+    if game["game"]["difficutly"] == 2:
+        if dice(game) == 1:
+            game = "YOU DIED"
+    exit()

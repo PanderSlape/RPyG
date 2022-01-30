@@ -79,7 +79,6 @@ def load_save(saves_dir):
 def save_game(saves_dir, game_name, game):
 
     name_save = game_name+game["player"]["name"]+"_"+game["game"]["time"]["hours"]+"-"+game["game"]["time"]["minutes"]+".json"
-
     with open(saves_dir+name_save, 'w') as f:
         json.dump(game, f)
 
@@ -107,8 +106,8 @@ if __name__ == '__main__':
         input()
         exit()
     try:
-        graphic_functions.setup()
-        graphic_functions.display(game)
+        #graphic_functions.setup()
+        #graphic_functions.display(game)
         os.system("clear")
         if game["exposition_text"]["was_played"] != "True":
             game_functions.play_exposition(game)

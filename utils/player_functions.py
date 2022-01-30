@@ -105,6 +105,12 @@ def check_money(game, coins):
         print("You cannot afford it")
         return False
 
+def gain_money(game, money):
+    print("Gained : "+money+" coins")
+    game["player"]["inventory"]["money"]+=int(money)
+
+    return game
+
 def pay(game, character, coins):
     game["player"]["inventory"]["money"] -= coins
     city = game["player"]["location"]["detail"].split(".")[0]
@@ -134,9 +140,8 @@ def fight(game, enemy):
                 hp = int(enemy_info["move-set"][str(enemy_choice)].split(".")[1])
                 print(enemy+" has healed by "+str(hp)+" hp")
                 enemy_info["hp"] += hp
-
-        return game
     except Exception as e:
+        print(game["enemies"][enemy])
         print(e)
 
 def combat_menu(game):

@@ -16,6 +16,7 @@ def craft_menu(game):
                 for i in range(0, len(ingredients), 2):
                     if ingredients[i+1] in game["player"]["inventory"][ingredients[i]]["owned"]:
                         list_ingredient.append(game["items_available"][ingredients[i]][ingredients[i+1]]["name"])
+                        print(list_ingredient)
                     else:
                         ok_for_crafting = False
                 if ok_for_crafting:
@@ -56,6 +57,16 @@ def craft_item(game, recipe):
     except Exception as e:
         print(e)
 
+    return game
+
+def get_item(game, category, item):
+    print("Gained : "+game["items_available"][category][item]["name"])
+    if item not in game["player"]["inventory"][category]["owned"]:
+        game["player"]["inventory"][category]["owned"][item] = 1
+    else:
+        game["player"]["inventory"][category]["owned"][item] += 1
+
+    
     return game
 
 def check_inventory(game):

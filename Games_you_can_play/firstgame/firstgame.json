@@ -13,6 +13,7 @@
         "exp": 0,
         "lvl": 0,
         "hp": 100,
+        "hp_max": 100,
         "location":{
             "x": 10,
             "y": 10,
@@ -145,7 +146,8 @@
                 "5": "idle",
                 "6": "idle"
             },
-            "hp": 60
+            "hp": 60,
+            "exp": 10
         }
     },
     "map": {
@@ -193,7 +195,7 @@
                     "level_one": ["bear"],
                     "level_two": ["bear"]
                 },
-                "chest": ["potion.000010", "money.50"]
+                "chest": ["potions.000010", "money.50", "exp.100"]
             }
         },
         "landmarks": {}
