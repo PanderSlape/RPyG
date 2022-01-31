@@ -16,7 +16,6 @@ def craft_menu(game):
                 for i in range(0, len(ingredients), 2):
                     if ingredients[i+1] in game["player"]["inventory"][ingredients[i]]["owned"]:
                         list_ingredient.append(game["items_available"][ingredients[i]][ingredients[i+1]]["name"])
-                        print(list_ingredient)
                     else:
                         ok_for_crafting = False
                 if ok_for_crafting:
