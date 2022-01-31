@@ -56,6 +56,7 @@ def load_game(gamefile):
 
 def load_save(saves_dir):
     saves_available = os.listdir(saves_dir)
+    saves_available.remove("ping")
 
     i = 0
     choices = {}
