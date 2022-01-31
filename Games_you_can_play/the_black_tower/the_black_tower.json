@@ -396,7 +396,7 @@
                     "x": 12,
                     "y": 12
                 },
-                "description": "You enter a silver lined wooden door, as you enter you feel a sense of dread chilling your bones. Yet you still push foward !",
+                "description": "Dark, intriguing, nightmarish, gloomy. Despite everything you must continue towards this forest !",
                 "levels" :{
                     "level_one": ["bear"],
                     "level_two": ["wolf"]
@@ -408,7 +408,7 @@
                     "x": 35,
                     "y": 35
                 },
-                "description": "You enter a silver lined wooden door, as you enter you feel a sense of dread chilling your bones. Yet you still push foward !",
+                "description": "Cette tour gigantesques bâtie au centre d'une plaine désolée, complètement défraichie est le dernier bastion à faire tomber pour le salut de l'humanité !",
                 "levels" :{
                     "level_one": ["bear"],
                     "level_two": ["wolf"],
